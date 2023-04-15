@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-// import PropTypes from 'prop-types';
-import css from "./App.module.css";
+// import css from "./App.module.css";
 import ContactForm from "../ContactForm/ContactForm";
 import  Filter from "../Filter/Filter";
 import ContactList from "../ContactList/ContactList";

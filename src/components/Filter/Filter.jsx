@@ -29,4 +29,10 @@ state={
         </label>
     )}
 }
+
+Filter.propTypes = {
+    // query: PropTypes.string.isRequired,
+    onQuery: PropTypes.func.isRequired
+    }
+
 export default Filter;

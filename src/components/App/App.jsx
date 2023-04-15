@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from "./App.module.css";
 import ContactForm from "../ContactForm/ContactForm";
 import  Filter from "../Filter/Filter";
@@ -17,10 +17,24 @@ class App extends Component {
   }
  
   formSubmitHandler=(newContact)=>{
+    const{contacts}=this.state;
+    if(contacts
+			.find(({name}) => name.toLowerCase()===(newContact.name.toLowerCase()))){
+        alert(`${newContact.name} is already in contacts.`);
+        return;
+      }
+
 this.setState((state)=>({
  contacts: [...state.contacts, newContact]
 }));
   }
+
+// checkForUnicName=(newContact)=>{
+//   const{contacts}=this.state;
+
+// contacts
+// 			.filter(({name}) => name.toLowerCase()===(newContact.name.toLowerCase()))
+// }
 
   handleQueryFilter=(query)=>{
  

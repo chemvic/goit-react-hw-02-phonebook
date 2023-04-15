@@ -5,7 +5,7 @@ const Contact=({name, number})=>{
 
     return(
         <>  
-              <li className={css.contact_item}>{name}: {number}</li>							))}
+              <li className={css.contact_item}>{name}: {number}</li>						
         </>
  
     )

@@ -74,8 +74,10 @@ required
   </div>
 );
 }
+}
 
+ContactForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
   }
-
 
 export default ContactForm;

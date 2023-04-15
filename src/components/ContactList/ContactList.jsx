@@ -16,7 +16,15 @@ const ContactList=({contacts,filter})=>{
 
 ContactList.propTypes={
     filter: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired
+    contacts: PropTypes.arrayOf(
+        PropTypes.exact(
+          {
+            name: PropTypes.string.isRequired,
+            number: PropTypes.string.isRequired,            
+            id: PropTypes.string.isRequired   
+          }
+        ),
+      ),
 }
 
 export default ContactList;

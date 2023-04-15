@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import css from "./App.module.css";
-import Form from "./Form/Form";
-
+import ContactForm from "../ContactForm/ContactForm";
+import  Filter from "../Filter/Filter";
+import ContactList from "../ContactList/ContactList";
 
 class App extends Component {
   state = {
@@ -17,40 +17,37 @@ class App extends Component {
   }
  
   formSubmitHandler=(newContact)=>{
-console.log(newContact);
 this.setState((state)=>({
  contacts: [...state.contacts, newContact]
 }));
-console.log(this.state.contacts);
   }
+
+  handleQueryFilter=(query)=>{
+ 
+    this.setState({filter: query});
+  
+  }
+
 
 	
   render(){
-    const{contacts}=this.state;
-    // const {contacts: {name, number}}=this.state;
+    const{contacts, filter}=this.state;
       return (
     <div
       style={{
-        // height: '100vh',
-        padding: 30,
-        // display: 'flex',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // fontSize: 40,
+        padding: 30,      
         color: '#010101'
       }}
     > 
-    <h2 className="title">Phonebook</h2>
+    <h1 className="title">Phonebook</h1>
 
-    <Form onSubmit={this.formSubmitHandler}/>
+    <ContactForm onSubmit={this.formSubmitHandler}/>
      
     <h2 className="title">Contacts</h2>
        
-       <ul className="contacts">
-        {contacts.map((contact)=>(
-       <li className="contact_item" key={contact.id}>{contact.name}: {contact.number}</li>
-))}
-       </ul>
+      <Filter onQuery={this.handleQueryFilter} />
+
+      <ContactList contacts={contacts} filter={filter} />       
 
     </div>
   );

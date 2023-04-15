@@ -1,10 +1,10 @@
 import React,{Component} from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-import css from "./Form.module.css";
+import css from "./ContactForm.module.css";
 
 
-class Form extends Component{
+class ContactForm extends Component{
 
 state={
     name: '',
@@ -37,17 +37,8 @@ number: ''});
 render(){
   const {name, number} = this.state;
     return (
-  <div
-    style={{
-      // height: '100vh',
-      padding: 30,
-      // display: 'flex',
-      // justifyContent: 'center',
-      // alignItems: 'center',
-      // fontSize: 40,
-      color: '#010101'
-    }}
-  > 
+  <div> 
+ 
     <form className={css.form} onSubmit={this.handleSubmit}>
        <label>Name
        <input
@@ -87,4 +78,4 @@ required
   }
 
 
-export default Form;
+export default ContactForm;

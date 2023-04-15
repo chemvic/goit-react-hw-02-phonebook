@@ -22,19 +22,16 @@ class App extends Component {
 			.find(({name}) => name.toLowerCase()===(newContact.name.toLowerCase()))){
         alert(`${newContact.name} is already in contacts.`);
         return;
-      }
+      }   
 
 this.setState((state)=>({
  contacts: [...state.contacts, newContact]
 }));
   }
+   onDeleteContact=(contactId)=>{
+        this.setState(prevState=>({contacts:prevState.contacts.filter(contact=>contact.id!==contactId),}));
 
-// checkForUnicName=(newContact)=>{
-//   const{contacts}=this.state;
-
-// contacts
-// 			.filter(({name}) => name.toLowerCase()===(newContact.name.toLowerCase()))
-// }
+      };
 
   handleQueryFilter=(query)=>{
  
@@ -61,7 +58,7 @@ this.setState((state)=>({
        
       <Filter onQuery={this.handleQueryFilter} />
 
-      <ContactList contacts={contacts} filter={filter} />       
+      <ContactList contacts={contacts} filter={filter} onDelete={this.onDeleteContact}/>       
 
     </div>
   );

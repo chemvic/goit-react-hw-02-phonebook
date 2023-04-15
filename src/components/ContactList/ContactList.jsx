@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import css from "./ContactList.module.css";
 import Contact from "../Contact/Contact";
 
-const ContactList=({contacts,filter})=>{
+const ContactList=({contacts,filter, onDelete})=>{
   
     return(
              <ul className={css.contacts}>
        {contacts
 			.filter(({name}) => name.toLowerCase().includes(filter.toLowerCase()))
-			.map(({name, number, id}) => (<Contact key={id} name={name} number={number}/>
+			.map(({name, number, id}) => (<Contact key={id} name={name} number={number} id={id} onDelete={onDelete}/>
+
             ))}
        </ul>
     )
@@ -16,6 +17,7 @@ const ContactList=({contacts,filter})=>{
 
 ContactList.propTypes={
     filter: PropTypes.string.isRequired,
+    onDelete: PropTypes.func.isRequired,
     contacts: PropTypes.arrayOf(
         PropTypes.exact(
           {

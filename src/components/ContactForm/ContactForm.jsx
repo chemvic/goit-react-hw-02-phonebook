@@ -40,8 +40,9 @@ render(){
   <div> 
  
     <form className={css.form} onSubmit={this.handleSubmit}>
-       <label>Name
-       <input
+       <label className={css.form_lable}>
+       <span>Name</span>
+       <input className={css.form_input}
 type="text"
 name="name"
 value={name}
@@ -55,8 +56,9 @@ title="Name may contain only letters,
 required
 />
     </label>
-    <label >Number
-    <input
+    <label className={css.form_lable}>
+    <span>Number</span>
+    <input className={css.form_input}
 type="tel"
 name="number"
 value={number}

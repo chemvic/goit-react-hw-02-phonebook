@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
-import css from "./Filter.module,css";
+import css from "./Filter.module.css";
 
 class Filter extends Component{
 state={
@@ -15,9 +15,10 @@ state={
     render(){
         
     return(
-        <label 
-        >Find contacts by name
-        <input type="text" 
+        <label className={css.filter_lable}>
+            <span>Find contacts by name</span>
+        <input className={css.filter_input}
+        type="text" 
         name="query" 
         onChange={this.handleInputChange}
         placeholder='Enter name for search ...'
@@ -31,7 +32,6 @@ state={
 }
 
 Filter.propTypes = {
-    // query: PropTypes.string.isRequired,
     onQuery: PropTypes.func.isRequired
     }
 

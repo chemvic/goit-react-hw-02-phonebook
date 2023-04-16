@@ -38,10 +38,17 @@ this.setState((state)=>({
   
   }
 
+  getFilteredContacts = ()=>{
+    const{contacts, filter}=this.state;
+    return contacts
+			.filter(({name}) => name.toLowerCase().includes(filter.toLowerCase()));      
+  }
+
 
 	
-  render(){
-    const{contacts, filter}=this.state;
+  render(){    
+    const filteredContacts=this.getFilteredContacts();
+
       return (
     <div
       style={{
@@ -57,7 +64,7 @@ this.setState((state)=>({
        
       <Filter onQuery={this.handleQueryFilter} />
 
-      <ContactList contacts={contacts} filter={filter} onDelete={this.onDeleteContact}/>       
+      <ContactList contacts={filteredContacts} onDelete={this.onDeleteContact}/>       
 
     </div>
   );

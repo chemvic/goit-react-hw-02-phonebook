@@ -1,26 +1,17 @@
-import React,{Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import css from "./Filter.module.css";
 
-class Filter extends Component{
-state={
-    query:'',
-}
+const Filter =({value, onQuery})=>{
 
-    handleInputChange=({ target:{ value: query } }) => {
-		this.setState({ query });
-        this.props.onQuery(query);
-          };
-
-    render(){
         
     return(
         <label className={css.filter_lable}>
             <span>Find contacts by name</span>
         <input className={css.filter_input}
         type="text" 
-        name="query" 
-        onChange={this.handleInputChange}
+        value={value}
+        onChange={onQuery}
         placeholder='Enter name for search ...'
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters,
@@ -28,11 +19,13 @@ state={
           For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         />
         </label>
-    )}
+    )
+
 }
 
 Filter.propTypes = {
-    onQuery: PropTypes.func.isRequired
+    onQuery: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired
     }
 
 export default Filter;

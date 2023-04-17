@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
-// import css from "./App.module.css";
-import ContactForm from "../ContactForm/ContactForm";
-import  Filter from "../Filter/Filter";
-import ContactList from "../ContactList/ContactList";
+import ContactForm from "../ContactForm";
+import  Filter from "../Filter";
+import ContactList from "../ContactList";
 
 class App extends Component {
   state = {
@@ -27,16 +26,16 @@ this.setState((state)=>({
  contacts: [...state.contacts, newContact]
 }));
   }
+
    onDeleteContact=(contactId)=>{
         this.setState(prevState=>({contacts:prevState.contacts.filter(contact=>contact.id!==contactId),}));
 
       };
 
-  handleQueryFilter=(query)=>{
- 
-    this.setState({filter: query});
-  
-  }
+      changeFilter = (event) => {
+        this.setState({ filter: event.currentTarget.value });
+      };
+   
 
   getFilteredContacts = ()=>{
     const{contacts, filter}=this.state;
@@ -48,6 +47,7 @@ this.setState((state)=>({
 	
   render(){    
     const filteredContacts=this.getFilteredContacts();
+    const{filter}=this.state;
 
       return (
     <div
@@ -62,7 +62,7 @@ this.setState((state)=>({
      
     <h2 className="title">Contacts</h2>
        
-      <Filter onQuery={this.handleQueryFilter} />
+      <Filter value={filter} onQuery={this.changeFilter} />
 
       <ContactList contacts={filteredContacts} onDelete={this.onDeleteContact}/>       
 
